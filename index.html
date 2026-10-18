@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta property="og:title" content="Kit Transição 5x2">
+<meta property="og:description" content="Guia visual + simulador em planilha para montar a escala 5x2 no seu negócio.">
+<meta property="og:image" content="img/hero.jpg">
+<meta property="og:type" content="website">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<!-- PIXEL DA META: cole aqui o código do seu Pixel (Gerenciador de Eventos > Configurar Pixel) -->
+<title>Kit Transição 5x2</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Guia visual + simulador em planilha para pequenos negócios saírem da escala 6x1 e montarem a escala 5x2 dentro das regras da EC nº 141/2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Poppins:wght@400;500;600&display=swap">
+<style>
+/* Layout: uma página de venda vertical. A "semana" (SEG–DOM) é o elemento-assinatura,
+   repetida do PDF e da planilha; faixas de cor marcam Hoje (coral) → Fase 1 (âmbar) → Fase 2 (verde). */
+:root{
+  --navy:#12213F; --navy-2:#1C2F57;
+  --bg:#FAF8F4; --surface:#FFFFFF; --ink:#1E2533; --muted:#5B6475; --line:#E6E2D8;
+  --coral:#E2603F; --amber:#E9A23B; --green:#1E9E78;
+  --coral-l:#FBE6DF; --amber-l:#FCF0DA; --green-l:#DDF2EA; --rest:#ECE9E1;
+  --on-navy:#FFFFFF; --on-navy-muted:#B9C4DA;
+  --cta:#E2603F; --cta-ink:#FFFFFF;
+  --f-display:"Bricolage Grotesque","Poppins",system-ui,sans-serif;
+  --f-body:"Poppins",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --r:14px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0E1628; --surface:#152039; --ink:#EEF1F7; --muted:#A3AEC4; --line:#26334F;
+  --coral-l:#3A2420; --amber-l:#3A3020; --green-l:#163A31; --rest:#22304B;
+  --navy:#0A1222; --navy-2:#16223D; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0E1628; --surface:#152039; --ink:#EEF1F7; --muted:#A3AEC4; --line:#26334F;
+  --coral-l:#3A2420; --amber-l:#3A3020; --green-l:#163A31; --rest:#22304B;
+  --navy:#0A1222; --navy-2:#16223D; color-scheme:dark }
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);line-height:1.08;text-wrap:balance;margin:0;letter-spacing:-.01em}
+h2{font-size:clamp(28px,4.2vw,44px);font-weight:800}
+h3{font-size:20px;font-weight:600}
+p{margin:0}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--coral)}
+section{padding-block:72px}
+.lead{color:var(--muted);font-size:17px;max-width:60ch}
+.stack{display:grid;gap:16px}
+
+/* Botão */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--cta);color:var(--cta-ink);
+  font-family:var(--f-body);font-weight:600;font-size:17px;text-decoration:none;padding:16px 28px;border-radius:999px;
+  box-shadow:0 8px 24px -10px rgba(226,96,63,.7);transition:transform .15s ease,box-shadow .15s ease}
+.btn:hover{transform:translateY(-1px);box-shadow:0 12px 28px -10px rgba(226,96,63,.8)}
+.btn:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+.btn svg{width:18px;height:18px}
+.fine{font-size:13px;color:var(--muted)}
+
+/* Topo */
+.top{background:var(--navy);color:var(--on-navy);position:relative;overflow:hidden}
+.top .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding-block:56px 0}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:14px;letter-spacing:.04em;color:var(--on-navy-muted)}
+.brand i{display:inline-grid;grid-template-columns:repeat(7,6px);gap:2px}
+.brand i b{width:6px;height:6px;border-radius:2px;background:var(--green)}
+.brand i b:nth-child(n+6){background:var(--navy-2);outline:1px solid #3A4D77}
+.hero-copy{display:grid;gap:22px;padding-bottom:56px}
+.hero-copy h1{font-size:clamp(38px,6vw,66px);font-weight:800;color:var(--on-navy)}
+.hero-copy h1 em{font-style:normal;color:var(--amber)}
+.hero-copy .lead{color:var(--on-navy-muted)}
+.hero-cta{display:flex;flex-wrap:wrap;align-items:center;gap:18px}
+.hero-cta .fine{color:var(--on-navy-muted)}
+.hero-photo{align-self:end;position:relative;border-radius:22px 22px 0 0;overflow:hidden;aspect-ratio:4/4.3;max-width:100%}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:78% 30%;display:block}
+.badge{position:absolute;left:16px;bottom:16px;background:var(--surface);color:var(--ink);border-radius:12px;padding:12px 14px;
+  display:grid;gap:2px;box-shadow:0 10px 30px -12px rgba(0,0,0,.45);font-size:13px}
+.badge strong{font-family:var(--f-display);font-size:22px;line-height:1}
+
+/* Semana-assinatura */
+.weekband{background:var(--navy-2);color:var(--on-navy)}
+.weekband .wrap{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;padding-block:28px}
+.weeklabel{display:grid;gap:4px;min-width:0}
+.weeklabel b{font-family:var(--f-display);font-size:22px}
+.weeklabel span{color:var(--on-navy-muted);font-size:13px}
+.week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}
+.day{border-radius:10px;padding:10px 4px;text-align:center;font-size:11px;font-weight:600;letter-spacing:.06em;
+  background:var(--coral);color:#fff;transition:background .6s ease,color .6s ease}
+.day small{display:block;font-size:15px;letter-spacing:0;font-family:var(--f-display);margin-top:2px}
+.day.off{background:#2C3D63;color:#97A6C4}
+.week[data-state="new"] .day{background:var(--green)}
+.week[data-state="new"] .day.off,.week[data-state="new"] .day.off2{background:#2C3D63;color:#97A6C4}
+.toggle{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
+.toggle button{font:inherit;font-size:13px;font-weight:600;border:1px solid #3A4D77;background:transparent;color:var(--on-navy-muted);
+  padding:6px 14px;border-radius:999px;cursor:pointer}
+.toggle button[aria-pressed="true"]{background:var(--on-navy);color:var(--navy);border-color:var(--on-navy)}
+.toggle button:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+
+/* Prazos */
+.prazos .head{display:grid;gap:12px;margin-bottom:36px}
+.timeline{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px;display:grid;gap:8px;position:relative;min-width:0}
+.step .tag{justify-self:start;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:999px}
+.step .date{font-family:var(--f-display);font-size:28px;font-weight:800}
+.step p{color:var(--muted);font-size:14.5px}
+.s0 .tag{background:var(--rest);color:var(--ink)}
+.s1 .tag{background:var(--amber-l);color:#A86A12}
+.s2 .tag{background:var(--green-l);color:var(--green)}
+.s1{border-color:var(--amber);box-shadow:0 0 0 3px var(--amber-l)}
+.countdown{margin-top:20px;display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;font-size:15px;color:var(--muted)}
+.countdown b{font-family:var(--f-display);font-size:40px;color:var(--coral);line-height:1;font-variant-numeric:tabular-nums}
+
+/* Dor */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.split > *{min-width:0}
+.photo{border-radius:20px;overflow:hidden;aspect-ratio:4/3;max-width:100%}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.qs{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:12px}
+.qs li{display:flex;gap:14px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-weight:500}
+.qs li span{flex:none;width:26px;height:26px;border-radius:8px;background:var(--coral-l);color:var(--coral);display:grid;place-items:center;font-weight:700;font-size:14px}
+
+/* Kit */
+.kit{background:var(--surface);border-block:1px solid var(--line)}
+.kit .head{display:grid;gap:12px;margin-bottom:40px;max-width:720px}
+.product{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.product + .product{margin-top:72px}
+.product > *{min-width:0}
+.product.rev .shots{order:2}
+.pages{position:relative;aspect-ratio:1.05/1;max-width:100%}
+.pages img{position:absolute;width:56%;border-radius:6px;box-shadow:0 24px 50px -24px rgba(18,33,63,.55);border:1px solid var(--line)}
+.pages img:nth-child(1){left:0;top:8%;transform:rotate(-5deg)}
+.pages img:nth-child(2){left:22%;top:2%;transform:rotate(1deg);z-index:2}
+.pages img:nth-child(3){right:0;top:12%;transform:rotate(6deg);z-index:1}
+.screen{background:var(--navy);padding:10px 10px 0;border-radius:16px 16px 6px 6px;box-shadow:0 30px 60px -30px rgba(18,33,63,.6)}
+.screen .bar{display:flex;gap:6px;padding:2px 4px 10px}
+.screen .bar i{width:9px;height:9px;border-radius:50%;background:#3A4D77}
+.screen .bar i:first-child{background:var(--coral)}
+.screen .bar i:nth-child(2){background:var(--amber)}
+.screen .bar i:nth-child(3){background:var(--green)}
+.screen img{display:block;width:100%;border-radius:4px 4px 0 0}
+.screen + .screen-sub{margin-top:-1px}
+.tabs-strip{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.tabs-strip span{font-size:12px;font-weight:600;padding:5px 11px;border-radius:999px;background:var(--rest);color:var(--ink)}
+.pcopy{display:grid;gap:16px}
+.pcopy .kind{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.pcopy h3{font-size:clamp(24px,3vw,32px);font-weight:800}
+.checks{list-style:none;padding:0;margin:4px 0 0;display:grid;gap:10px}
+.checks li{display:grid;grid-template-columns:22px 1fr;gap:10px;color:var(--ink);font-size:15.5px}
+.checks svg{width:22px;height:22px;margin-top:1px}
+
+/* Passos */
+.how .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:36px}
+.how .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:24px;display:grid;gap:10px;align-content:start}
+.how .num{width:38px;height:38px;border-radius:10px;background:var(--navy);color:var(--on-navy);display:grid;place-items:center;font-family:var(--f-display);font-weight:800;font-size:18px}
+.how .card p{color:var(--muted);font-size:15px}
+
+/* Resultado */
+.result .pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.result .pills span{font-size:14px;font-weight:500;padding:8px 14px;border-radius:999px;background:var(--green-l);color:var(--green)}
+
+/* Oferta */
+.offer{background:var(--navy);color:var(--on-navy)}
+.offer .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.offer .wrap > *{min-width:0}
+.offer h2{color:var(--on-navy)}
+.offer .lead{color:var(--on-navy-muted)}
+.pricebox{background:var(--surface);color:var(--ink);border-radius:22px;padding:32px;display:grid;gap:18px;box-shadow:0 30px 70px -30px rgba(0,0,0,.6)}
+.pricebox .items{list-style:none;padding:0;margin:0;display:grid;gap:10px;border-bottom:1px solid var(--line);padding-bottom:18px}
+.pricebox .items li{display:flex;justify-content:space-between;gap:12px;font-size:15px}
+.pricebox .items li span:last-child{color:var(--muted);white-space:nowrap}
+.price{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.price .old{color:var(--muted);text-decoration:line-through;font-size:16px}
+.price .now{font-family:var(--f-display);font-size:56px;font-weight:800;line-height:1}
+.price .now small{font-size:22px;vertical-align:top;margin-right:4px}
+.price .note{font-size:14px;color:var(--muted)}
+.pricebox .btn{width:100%}
+.trust{display:flex;flex-wrap:wrap;gap:14px;font-size:13px;color:var(--muted)}
+.trust span{display:inline-flex;align-items:center;gap:6px}
+.trust svg{width:16px;height:16px}
+
+/* FAQ */
+.faq .list{margin-top:32px;display:grid;gap:10px;max-width:820px}
+.faq details{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:0 20px}
+.faq summary{cursor:pointer;list-style:none;padding:18px 0;font-weight:600;display:flex;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--f-display);font-size:22px;line-height:1;color:var(--coral);flex:none}
+.faq details[open] summary::after{content:"–"}
+.faq summary:focus-visible{outline:2px solid var(--amber);outline-offset:4px;border-radius:6px}
+.faq details p{padding:0 0 18px;color:var(--muted);font-size:15px;max-width:68ch}
+
+/* Rodapé */
+footer{background:var(--navy);color:var(--on-navy-muted);font-size:13px}
+footer .wrap{display:grid;gap:14px;padding-block:40px}
+footer strong{color:var(--on-navy)}
+.legal{max-width:90ch;line-height:1.65}
+
+/* Barra fixa no celular */
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--surface);border-top:1px solid var(--line);
+  padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));
+  display:none;align-items:center;justify-content:space-between;gap:12px}
+.sticky b{font-family:var(--f-display);font-size:22px}
+.sticky .btn{padding:12px 20px;font-size:15px}
+
+@media (max-width:880px){
+  section{padding-block:56px}
+  .top .wrap{grid-template-columns:1fr;padding-block:36px 0;gap:8px}
+  .hero-copy{padding-bottom:24px}
+  .hero-photo{aspect-ratio:4/3;border-radius:18px 18px 0 0}
+  .hero-photo img{object-position:70% 30%}
+  .weekband .wrap{grid-template-columns:1fr;gap:14px}
+  .timeline,.how .grid{grid-template-columns:1fr}
+  .split,.product,.offer .wrap{grid-template-columns:1fr;gap:28px}
+  .product.rev .shots{order:0}
+  .sticky{display:flex}
+  body{padding-bottom:76px}
+  .day{padding:8px 2px;font-size:10px}
+  .day small{font-size:13px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+</head>
+<body>
+<!-- ============================================================
+     CONFIGURAÇÃO: troque aqui o link do checkout e o preço.
+     O script no fim da página aplica em todos os botões.
+     ============================================================ -->
+
+<header class="top">
+  <div class="wrap">
+    <div class="hero-copy">
+      <div class="brand"><i aria-hidden="true"><b></b><b></b><b></b><b></b><b></b><b></b><b></b></i>KIT TRANSIÇÃO 5x2</div>
+      <h1>Sua escala de dezembro <em>já está pronta?</em></h1>
+      <p class="lead">A escala 6x1 acabou. Em poucas semanas, cada funcionário passa a ter duas folgas por semana. Com o guia e o simulador do kit, você monta a nova escala, vê quem cobre cada dia e quanto isso custa, antes do prazo.</p>
+      <div class="hero-cta">
+        <a class="btn" data-checkout href="https://pay.kiwify.com.br/SEU-LINK-AQUI">Quero o kit por <span data-preco>R$ 37</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <span class="fine">Pagamento único · acesso imediato</span>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <picture>
+        <source media="(max-width:880px)" srcset="img/hero-mobile.jpg">
+        <img src="img/hero.jpg" alt="Dona de padaria sorrindo atrás do balcão com pães frescos" width="1800" height="1004" fetchpriority="high">
+      </picture>
+      <div class="badge"><span>Nova jornada máxima</span><strong>42h → 40h</strong><span>sem reduzir salário</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="weekband" aria-label="Comparação da semana na escala 6x1 e na 5x2">
+  <div class="wrap">
+    <div class="weeklabel">
+      <b id="wk-title">Hoje: 6x1</b>
+      <span id="wk-sub">6 dias de trabalho, 1 folga · até 44h</span>
+      <div class="toggle" role="group" aria-label="Escolha a escala">
+        <button type="button" id="btn-old" aria-pressed="true">Hoje</button>
+        <button type="button" id="btn-new" aria-pressed="false">A partir de dezembro</button>
+      </div>
+    </div>
+    <div class="week" id="week" data-state="old">
+      <div class="day">SEG<small>7h20</small></div>
+      <div class="day">TER<small>7h20</small></div>
+      <div class="day">QUA<small>7h20</small></div>
+      <div class="day">QUI<small>7h20</small></div>
+      <div class="day">SEX<small>7h20</small></div>
+      <div class="day" data-flip>SÁB<small>7h20</small></div>
+      <div class="day off">DOM<small>folga</small></div>
+    </div>
+  </div>
+</div>
+
+<main>
+  <section class="prazos">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Os prazos da EC nº 141/2026</span>
+        <h2>A mudança tem data para começar</h2>
+        <p class="lead">A emenda foi promulgada em 16 de outubro de 2026. A partir daí, a contagem é curta.</p>
+      </div>
+      <div class="timeline">
+        <div class="step s0"><span class="tag">Promulgação</span><span class="date">16/10/2026</span><p>Começa a contagem dos prazos de transição.</p></div>
+        <div class="step s1"><span class="tag">Fase 1</span><span class="date">≈ 15/12/2026</span><p>60 dias após a publicação: duas folgas por semana e até 42 horas semanais.</p></div>
+        <div class="step s2"><span class="tag">Fase 2</span><span class="date">≈ dez/2027</span><p>Um ano depois da Fase 1: até 40 horas semanais, mantendo as duas folgas.</p></div>
+      </div>
+      <p class="countdown"><b id="dias">58</b> <span>dias, aproximadamente, até a Fase 1 começar a valer.</span></p>
+    </div>
+  </section>
+
+  <section class="dor">
+    <div class="wrap split">
+      <div class="photo"><img src="img/dor.jpg" alt="Dono de mercadinho preocupado olhando uma escala de papel cheia de rabiscos" width="1100" height="821" loading="lazy"></div>
+      <div class="stack">
+        <span class="eyebrow">O problema</span>
+        <h2>A escala no papel não fecha mais</h2>
+        <p class="lead">Com duas folgas por pessoa, a conta muda. E as dúvidas aparecem todas de uma vez:</p>
+        <ul class="qs">
+          <li><span>1</span>Quem vai trabalhar no sábado e no domingo?</li>
+          <li><span>2</span>Vou precisar contratar mais alguém?</li>
+          <li><span>3</span>Quanto a hora de cada funcionário vai custar agora?</li>
+          <li><span>4</span>Posso fazer 8h24 por dia para fechar as 42 horas?</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="kit" id="kit">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">O que vem no kit</span>
+        <h2>Dois materiais que trabalham juntos</h2>
+        <p class="lead">O guia explica as regras em linguagem simples. O simulador aplica essas regras na sua equipe.</p>
+      </div>
+
+      <div class="product">
+        <div class="shots pages" aria-hidden="true">
+          <img src="img/guia-capa.jpg" alt="" loading="lazy">
+          <img src="img/guia-resumo.jpg" alt="" loading="lazy">
+          <img src="img/guia-fase1.jpg" alt="" loading="lazy">
+        </div>
+        <div class="pcopy">
+          <span class="kind">Guia em PDF · 11 páginas</span>
+          <h3>Do 6x1 ao 5x2</h3>
+          <p class="lead">Um guia visual para entender o que muda hoje, em dezembro de 2026 e em dezembro de 2027.</p>
+          <ul class="checks">
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="var(--green-l)"/><path d="M7 12.5l3.2 3L17 9" fill="none" stroke="var(--green)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Semanas desenhadas de cada fase, com exemplos prontos</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="var(--green-l)"/><path d="M7 12.5l3.2 3L17 9" fill="none" stroke="var(--green)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Quanto a hora trabalhada aumenta com o mesmo salário</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="var(--green-l)"/><path d="M7 12.5l3.2 3L17 9" fill="none" stroke="var(--green)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>A conta de cobertura: quantas pessoas cada posto precisa</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="var(--green-l)"/><path d="M7 12.5l3.2 3L17 9" fill="none" stroke="var(--green)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Plano de 60 dias com checklist, semana a semana</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="product rev">
+        <div class="pcopy">
+          <span class="kind">Planilha · Excel e Google Planilhas</span>
+          <h3>Simulador de Escala 5x2</h3>
+          <p class="lead">Você preenche as células amarelas. A planilha monta a semana e avisa o que não fecha.</p>
+          <ul class="checks">
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="var(--green-l)"/><path d="M7 12.5l3.2 3L17 9" fill="none" stroke="var(--green)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Escala semanal montada automaticamente, para até 30 funcionários</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="var(--green-l)"/><path d="M7 12.5l3.2 3L17 9" fill="none" stroke="var(--green)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Alerta de folgas repetidas, limite de 42h ou 40h e jornada acima de 8h</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="var(--green-l)"/><path d="M7 12.5l3.2 3L17 9" fill="none" stroke="var(--green)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Mostra os dias em que falta gente e quantas horas faltam</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="var(--green-l)"/><path d="M7 12.5l3.2 3L17 9" fill="none" stroke="var(--green)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Compara o custo de contratar, contratar meio período ou pagar horas extras</li>
+          </ul>
+          <div class="tabs-strip" aria-label="Abas da planilha"><span>Início</span><span>Empresa</span><span>Equipe</span><span>Escala</span><span>Painel</span><span>Cenários</span></div>
+        </div>
+        <div class="shots">
+          <div class="screen"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div>
+            <img src="img/planilha-escala.jpg" alt="Aba Escala do simulador mostrando a semana de cada funcionário com folgas em cinza" width="1200" height="556" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="how">
+    <div class="wrap">
+      <span class="eyebrow">Como funciona</span>
+      <h2>Escala nova em três passos</h2>
+      <div class="grid">
+        <div class="card"><span class="num">1</span><h3>Conte como sua loja funciona</h3><p>Dias abertos, horário e quantas pessoas precisam estar trabalhando ao mesmo tempo.</p></div>
+        <div class="card"><span class="num">2</span><h3>Cadastre a equipe</h3><p>Salário, horas de hoje e as duas novas folgas de cada pessoa. Basta escolher na lista.</p></div>
+        <div class="card"><span class="num">3</span><h3>Veja o resultado</h3><p>A semana montada, os dias descobertos, o novo valor da hora e o custo de cada solução.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="result">
+    <div class="wrap split">
+      <div class="stack">
+        <span class="eyebrow">Depois do kit</span>
+        <h2>Equipe organizada, sem surpresa no caixa</h2>
+        <p class="lead">Você chega a dezembro sabendo quem folga em cada dia, se precisa contratar e quanto isso custa. E com tudo por escrito para conversar com seu contador e com a equipe.</p>
+        <div class="pills"><span>Rodízio de domingos</span><span>Cobertura por dia</span><span>Custo da hora</span><span>Plano de 60 dias</span></div>
+      </div>
+      <div class="photo"><img src="img/equipe.jpg" alt="Equipe de quatro funcionários sorrindo dentro de uma loja" width="1100" height="821" loading="lazy"></div>
+    </div>
+  </section>
+
+  <section class="offer" id="oferta">
+    <div class="wrap">
+      <div class="stack">
+        <span class="eyebrow" style="color:var(--amber)">Oferta de lançamento</span>
+        <h2>Tudo o que você precisa para sair da 6x1</h2>
+        <p class="lead">Feito para pequenos negócios: padarias, mercados, lojas, farmácias, salões e restaurantes.</p>
+        <div class="screen" style="margin-top:8px"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div>
+          <img src="img/planilha-painel.jpg" alt="Painel do simulador com indicadores e gráfico de cobertura por dia" width="1200" height="1508" loading="lazy" style="max-height:340px;object-fit:cover;object-position:top">
+        </div>
+      </div>
+      <div class="pricebox">
+        <ul class="items">
+          <li><span>Guia visual Do 6x1 ao 5x2 (PDF)</span><span>11 páginas</span></li>
+          <li><span>Simulador de Escala 5x2 (planilha)</span><span>6 abas</span></li>
+          <li><span>Exemplo completo de uma padaria</span><span>pronto</span></li>
+        </ul>
+        <div class="price">
+          <span class="old" data-preco-antigo>R$ 67</span>
+          <span class="now"><small>R$</small><span data-preco-num>37</span></span>
+          <span class="note">pagamento único</span>
+        </div>
+        <a class="btn" data-checkout href="https://pay.kiwify.com.br/SEU-LINK-AQUI">Quero o Kit Transição 5x2
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <div class="trust">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Pagamento seguro</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg>7 dias de garantia</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M4 8h16M9 20V8"/></svg>Acesso imediato</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq">
+    <div class="wrap">
+      <span class="eyebrow">Perguntas frequentes</span>
+      <h2>Antes de comprar</h2>
+      <div class="list">
+        <details><summary>Preciso saber mexer em Excel?</summary><p>Não. Você só preenche as células amarelas e escolhe as folgas numa lista. A aba Início explica tudo em quatro passos, e a planilha já vem com um exemplo preenchido.</p></details>
+        <details><summary>Funciona no Google Planilhas?</summary><p>Sim. Funciona no Excel e no Google Planilhas, no computador. No celular dá para consultar, mas preencher é mais confortável numa tela maior.</p></details>
+        <details><summary>Serve para MEI e microempresa?</summary><p>Sim. O kit foi pensado para pequenos negócios. A emenda também prevê que uma futura lei complementar poderá trazer adaptações para MEI, microempresas e empresas de pequeno porte. O guia explica esse ponto.</p></details>
+        <details><summary>Quantos funcionários cabem no simulador?</summary><p>Até 30 funcionários, com as folgas e as horas de cada um.</p></details>
+        <details><summary>E se minha empresa usa 12x36 ou tem convenção coletiva?</summary><p>O guia mostra que essas situações dependem de acordo ou convenção coletiva. O simulador foca na escala 5x2. Nesses casos, consulte a convenção da sua categoria e seu contador.</p></details>
+        <details><summary>O kit substitui meu contador?</summary><p>Não. O kit organiza a transição e mostra os números. As decisões finais sobre contratos, acordos e folha devem ser validadas com seu contador ou advogado.</p></details>
+        <details><summary>Como recebo os arquivos?</summary><p>Logo após a confirmação do pagamento, você recebe o acesso por e-mail para baixar o guia e a planilha.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <strong>Kit Transição 5x2</strong>
+    <p class="legal">Aviso legal: este material tem caráter exclusivamente informativo e educativo. Ele não constitui consultoria jurídica, contábil ou trabalhista e não substitui a orientação de contador ou advogado. As datas de vigência são estimativas contadas a partir da promulgação da Emenda Constitucional nº 141/2026 e podem variar conforme a publicação oficial e eventual regulamentação. Os exemplos de valores e escalas são ilustrativos. O autor não se responsabiliza por decisões tomadas com base exclusivamente neste conteúdo.</p>
+    <p>Este site não é afiliado ao Governo Federal nem ao Congresso Nacional.</p>
+  </div>
+</footer>
+
+<div class="sticky" aria-label="Comprar o kit">
+  <div><span class="fine">Kit Transição 5x2</span><br><b data-preco>R$ 37</b></div>
+  <a class="btn" data-checkout href="https://pay.kiwify.com.br/SEU-LINK-AQUI">Quero o kit</a>
+</div>
+
+<script>
+/* ====== CONFIGURAÇÃO: edite só estas três linhas ====== */
+var CONFIG = {
+  checkout: "https://pay.kiwify.com.br/SEU-LINK-AQUI",
+  preco: 37,
+  precoAntigo: 67
+};
+/* ====================================================== */
+(function(){
+  var fmt = function(n){ return "R$ " + String(n).replace(".", ","); };
+  document.querySelectorAll("[data-checkout]").forEach(function(a){ a.href = CONFIG.checkout; a.target = "_blank"; a.rel = "noopener"; });
+  document.querySelectorAll("[data-preco]").forEach(function(el){ el.textContent = fmt(CONFIG.preco); });
+  document.querySelectorAll("[data-preco-num]").forEach(function(el){ el.textContent = String(CONFIG.preco).replace(".", ","); });
+  document.querySelectorAll("[data-preco-antigo]").forEach(function(el){
+    if (CONFIG.precoAntigo) { el.textContent = fmt(CONFIG.precoAntigo); } else { el.hidden = true; }
+  });
+
+  // Contagem estimada até a Fase 1 (15/12/2026)
+  var alvo = new Date(2026, 11, 15), hoje = new Date();
+  var d = Math.ceil((alvo - hoje) / 86400000);
+  var el = document.getElementById("dias");
+  if (d > 0) { el.textContent = d; } else { el.parentNode.innerHTML = "<span>A Fase 1 já está valendo. A Fase 2, com 40 horas, vem em dezembro de 2027.</span>"; }
+
+  // Semana: hoje x a partir de dezembro
+  var week = document.getElementById("week"), days = week.querySelectorAll(".day");
+  var bOld = document.getElementById("btn-old"), bNew = document.getElementById("btn-new");
+  var t = document.getElementById("wk-title"), s = document.getElementById("wk-sub");
+  var auto = true;
+  function setState(st){
+    week.dataset.state = st;
+    var isNew = st === "new";
+    bOld.setAttribute("aria-pressed", String(!isNew));
+    bNew.setAttribute("aria-pressed", String(isNew));
+    t.textContent = isNew ? "A partir de dezembro: 5x2" : "Hoje: 6x1";
+    s.textContent = isNew ? "5 dias de trabalho, 2 folgas · até 42h, depois 40h" : "6 dias de trabalho, 1 folga · até 44h";
+    days.forEach(function(dEl, i){
+      var sm = dEl.querySelector("small");
+      if (i === 6) { sm.textContent = "folga"; return; }
+      if (i === 5) { dEl.classList.toggle("off", isNew); sm.textContent = isNew ? "folga" : "7h20"; return; }
+      sm.textContent = isNew ? "8h" : "7h20";
+    });
+  }
+  bOld.addEventListener("click", function(){ auto = false; setState("old"); });
+  bNew.addEventListener("click", function(){ auto = false; setState("new"); });
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!reduce) {
+    setInterval(function(){ if (auto) setState(week.dataset.state === "old" ? "new" : "old"); }, 3200);
+  }
+})();
+</script>
+
+</body>
+</html>
