@@ -8,7 +8,19 @@
 <meta property="og:image" content="img/hero.jpg">
 <meta property="og:type" content="website">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<!-- PIXEL DA META: cole aqui o código do seu Pixel (Gerenciador de Eventos > Configurar Pixel) -->
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1058553587186835');
+fbq('track','PageView');
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('[data-checkout]');if(a){fbq('track','InitiateCheckout',{value:37,currency:'BRL',content_name:'Kit Transição 5x2'});}});
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1058553587186835&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel -->
 <title>Kit Transição 5x2</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Guia visual + simulador em planilha para pequenos negócios saírem da escala 6x1 e montarem a escala 5x2 dentro das regras da EC nº 141/2026.">
