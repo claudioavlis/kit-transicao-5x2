@@ -84,6 +84,18 @@ section{padding-block:72px}
 .hero-copy .lead{color:var(--on-navy-muted)}
 .hero-cta{display:flex;flex-wrap:wrap;align-items:center;gap:18px}
 .hero-cta .fine{color:var(--on-navy-muted)}
+.hero-gets{list-style:none;padding:0;margin:0;display:grid;gap:6px;color:var(--on-navy)}
+.hero-gets li{position:relative;padding-left:20px;font-size:15.5px}
+.hero-gets li::before{content:"";position:absolute;left:0;top:.55em;width:9px;height:9px;border-radius:3px;background:var(--green)}
+.hero-gets b{font-weight:600}
+.ghost{color:var(--on-navy);font-weight:600;font-size:15px;text-decoration:none;border-bottom:1px solid #3A4D77;padding-bottom:2px}
+.ghost:hover{border-color:var(--on-navy)}
+.hero-trust{font-size:13.5px;color:var(--on-navy-muted)}
+.hero-trust .hot{color:var(--amber);font-weight:600;white-space:nowrap}
+.kit-cta{margin-top:56px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px;text-align:center}
+.kit-cta .fine{width:100%}
+.guarantee{display:flex;gap:12px;align-items:flex-start;background:var(--green-l);border-radius:12px;padding:12px 14px;font-size:13.5px;color:var(--ink)}
+.guarantee b{display:block}
 .hero-photo{align-self:end;position:relative;border-radius:22px 22px 0 0;overflow:hidden;aspect-ratio:4/4.3;max-width:100%}
 .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:78% 30%;display:block}
 .badge{position:absolute;left:16px;bottom:16px;background:var(--surface);color:var(--ink);border-radius:12px;padding:12px 14px;
@@ -245,11 +257,17 @@ footer strong{color:var(--on-navy)}
       <div class="brand"><i aria-hidden="true"><b></b><b></b><b></b><b></b><b></b><b></b><b></b></i>KIT TRANSIÇÃO 5x2</div>
       <h1>Sua escala de dezembro <em>já está pronta?</em></h1>
       <p class="lead">A escala 6x1 acabou. Em poucas semanas, cada funcionário passa a ter duas folgas por semana. Com o guia e o simulador do kit, você monta a nova escala, vê quem cobre cada dia e quanto isso custa, antes do prazo.</p>
+      <ul class="hero-gets">
+        <li><b>Guia visual em PDF</b> · 11 páginas</li>
+        <li><b>Planilha simuladora</b> · Excel e Google Planilhas</li>
+        <li><b>Exemplo pronto</b> de uma padaria</li>
+      </ul>
       <div class="hero-cta">
         <a class="btn" data-checkout href="https://pay.kiwify.com.br/oqHEHbK">Quero o kit por <span data-preco>R$ 37</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <span class="fine">Pagamento único · acesso imediato</span>
+        <a class="ghost" href="#kit">Ver o que vem no kit ↓</a>
       </div>
+      <p class="hero-trust">✓ Acesso imediato &nbsp;·&nbsp; ✓ Pix ou cartão &nbsp;·&nbsp; ✓ Garantia de 7 dias &nbsp;·&nbsp; <span class="hot">⏳ <span id="dias-hero">54</span> dias para a Fase 1</span></p>
     </div>
     <div class="hero-photo">
       <picture>
@@ -284,39 +302,6 @@ footer strong{color:var(--on-navy)}
 </div>
 
 <main>
-  <section class="prazos">
-    <div class="wrap">
-      <div class="head">
-        <span class="eyebrow">Os prazos da EC nº 141/2026</span>
-        <h2>A mudança tem data para começar</h2>
-        <p class="lead">A emenda foi promulgada em 16 de outubro de 2026. A partir daí, a contagem é curta.</p>
-      </div>
-      <div class="timeline">
-        <div class="step s0"><span class="tag">Promulgação</span><span class="date">16/10/2026</span><p>Começa a contagem dos prazos de transição.</p></div>
-        <div class="step s1"><span class="tag">Fase 1</span><span class="date">≈ 15/12/2026</span><p>60 dias após a publicação: duas folgas por semana e até 42 horas semanais.</p></div>
-        <div class="step s2"><span class="tag">Fase 2</span><span class="date">≈ dez/2027</span><p>Um ano depois da Fase 1: até 40 horas semanais, mantendo as duas folgas.</p></div>
-      </div>
-      <p class="countdown"><b id="dias">58</b> <span>dias, aproximadamente, até a Fase 1 começar a valer.</span></p>
-    </div>
-  </section>
-
-  <section class="dor">
-    <div class="wrap split">
-      <div class="photo"><img src="img/dor.jpg" alt="Dono de mercadinho preocupado olhando uma escala de papel cheia de rabiscos" width="1100" height="821" loading="lazy"></div>
-      <div class="stack">
-        <span class="eyebrow">O problema</span>
-        <h2>A escala no papel não fecha mais</h2>
-        <p class="lead">Com duas folgas por pessoa, a conta muda. E as dúvidas aparecem todas de uma vez:</p>
-        <ul class="qs">
-          <li><span>1</span>Quem vai trabalhar no sábado e no domingo?</li>
-          <li><span>2</span>Vou precisar contratar mais alguém?</li>
-          <li><span>3</span>Quanto a hora de cada funcionário vai custar agora?</li>
-          <li><span>4</span>Posso fazer 8h24 por dia para fechar as 42 horas?</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
   <section class="kit" id="kit">
     <div class="wrap">
       <div class="head">
@@ -362,6 +347,45 @@ footer strong{color:var(--on-navy)}
             <img src="img/planilha-escala.jpg" alt="Aba Escala do simulador mostrando a semana de cada funcionário com folgas em cinza" width="1200" height="556" loading="lazy">
           </div>
         </div>
+      </div>
+
+      <div class="kit-cta">
+        <a class="btn" data-checkout href="https://pay.kiwify.com.br/oqHEHbK">Quero o kit por <span data-preco>R$ 37</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <p class="fine">Pagamento único · Pix ou cartão · acesso imediato · garantia de 7 dias</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="prazos">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Os prazos da EC nº 141/2026</span>
+        <h2>A mudança tem data para começar</h2>
+        <p class="lead">A emenda foi promulgada em 16 de outubro de 2026. A partir daí, a contagem é curta.</p>
+      </div>
+      <div class="timeline">
+        <div class="step s0"><span class="tag">Promulgação</span><span class="date">16/10/2026</span><p>Começa a contagem dos prazos de transição.</p></div>
+        <div class="step s1"><span class="tag">Fase 1</span><span class="date">≈ 15/12/2026</span><p>60 dias após a publicação: duas folgas por semana e até 42 horas semanais.</p></div>
+        <div class="step s2"><span class="tag">Fase 2</span><span class="date">≈ dez/2027</span><p>Um ano depois da Fase 1: até 40 horas semanais, mantendo as duas folgas.</p></div>
+      </div>
+      <p class="countdown"><b id="dias">58</b> <span>dias, aproximadamente, até a Fase 1 começar a valer.</span></p>
+    </div>
+  </section>
+
+  <section class="dor">
+    <div class="wrap split">
+      <div class="photo"><img src="img/dor.jpg" alt="Dono de mercadinho preocupado olhando uma escala de papel cheia de rabiscos" width="1100" height="821" loading="lazy"></div>
+      <div class="stack">
+        <span class="eyebrow">O problema</span>
+        <h2>A escala no papel não fecha mais</h2>
+        <p class="lead">Com duas folgas por pessoa, a conta muda. E as dúvidas aparecem todas de uma vez:</p>
+        <ul class="qs">
+          <li><span>1</span>Quem vai trabalhar no sábado e no domingo?</li>
+          <li><span>2</span>Vou precisar contratar mais alguém?</li>
+          <li><span>3</span>Quanto a hora de cada funcionário vai custar agora?</li>
+          <li><span>4</span>Posso fazer 8h24 por dia para fechar as 42 horas?</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -411,13 +435,14 @@ footer strong{color:var(--on-navy)}
           <span class="now"><small>R$</small><span data-preco-num>37</span></span>
           <span class="note">pagamento único</span>
         </div>
-        <a class="btn" data-checkout href="https://pay.kiwify.com.br/oqHEHbK">Quero o Kit Transição 5x2
+        <a class="btn" data-checkout href="https://pay.kiwify.com.br/oqHEHbK">Quero o kit agora
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <div class="trust">
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Pagamento seguro</span>
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg>7 dias de garantia</span>
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M4 8h16M9 20V8"/></svg>Acesso imediato</span>
         </div>
+        <div class="guarantee"><span aria-hidden="true">🛡️</span><span><b>Risco zero por 7 dias</b>Se o kit não servir para o seu negócio, peça o reembolso pela Kiwify em até 7 dias e receba 100% do valor de volta.</span></div>
       </div>
     </div>
   </section>
@@ -457,7 +482,7 @@ footer strong{color:var(--on-navy)}
 var CONFIG = {
   checkout: "https://pay.kiwify.com.br/oqHEHbK",
   preco: 37,
-  precoAntigo: 67
+  precoAntigo: 0
 };
 /* ====================================================== */
 (function(){
@@ -473,6 +498,8 @@ var CONFIG = {
   var alvo = new Date(2026, 11, 15), hoje = new Date();
   var d = Math.ceil((alvo - hoje) / 86400000);
   var el = document.getElementById("dias");
+  var eh = document.getElementById("dias-hero");
+  if (eh) { if (d > 0) { eh.textContent = d; } else { eh.parentNode.textContent = "✓ Fase 1 em vigor"; } }
   if (d > 0) { el.textContent = d; } else { el.parentNode.innerHTML = "<span>A Fase 1 já está valendo. A Fase 2, com 40 horas, vem em dezembro de 2027.</span>"; }
 
   // Semana: hoje x a partir de dezembro
